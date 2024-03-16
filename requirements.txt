@@ -2,5 +2,4 @@ streamlit
 numpy
 tensorflow==2.15.0
 keras==3.0.5
-base64
 matplotlib
