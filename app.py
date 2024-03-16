@@ -25,6 +25,10 @@ background = f"""
     background-color: white;
 }}
 
+.stForm {{
+    background-color: white;
+}}
+
 .stTextInput {{
     border: 2px solid crimson;
     border-radius: 10px;
