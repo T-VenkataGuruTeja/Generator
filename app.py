@@ -5,6 +5,9 @@ import numpy as np
 import tensorflow
 from tensorflow.keras.preprocessing.text import Tokenizer
 
+with open('c.png', 'rb') as f:
+    background_image = base64.b64encode(f.read()).decode()
+
 home = tensorflow.keras.models.load_model('gen2.keras')
 
 bag = [
@@ -14,22 +17,42 @@ bag = [
 token = tensorflow.keras.preprocessing.text.Tokenizer(num_words = 10)
 token.fit_on_texts(bag)
 
-
 background = f"""
 <style>
-.stApp {{
-    background-image: url(data:image/{'png'};base64,{base64.b64encode(open('c.png', 'rb').read()).decode()});
+
+.appview-container {{
+    background-image: url('data:image/png;base64, {background_image}');
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: center;
+    background-size: cover;
+}}
+
+.row-widget.stTextInput > div {{
+    border-width: 0;
+}}
+
+.row-widget.stTextInput > div > div {{
     background-color: white;
 }}
 
-.stTextInput {{
-    border: 2px solid crimson;
+.row-widget.stTextInput > div > div > input {{
+    background-color: lightgrey;
+    border: 2px solid red;
     border-radius: 10px;
-    background: crimson;
-    background-color: white
+    color: red;
+    caret-color: red;
+}}
+
+.row-widget.stButton > button{{
+    background-color: lightyellow;
+    color: red;
+    border: 2px solid red;
+}}
+
+.row-widget.stDownloadButton > button{{
+    background-color: lightyellow;
+    color: red;
+    border: 2px solid red;
 }}
 </style>
 """
